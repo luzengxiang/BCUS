@@ -1,0 +1,17 @@
+
+topic: ~topic_control keep repeat ()
+u:(~emohello) Hello. What can I do for you?
+
+
+u: (late fee) ^respond(~late_fee)
+
+u: (lost) ^respond(~lost_card)
+
+
+
+u: (~emogoodbye) Have a great day.
+
+u: () Sorry, I don't undertand it. Do you want to tranfer to agent.
+    a:(~yes) Please wait patiently.
+    a:(~no) ^respond(~index)
+    a:() ^respond(~topic_control)

@@ -1,0 +1,28 @@
+topic: ~late_fee keep repeat ()
+
+t: ENTERNUMBER (~yes) Please enter 8 digits account number.
+    a:(~number) OK, recorded.I am tranfering you to an agent.
+    a:() Sorry, it is not a legal account number.Would you like to re-enter it?
+        b:(~yes) ^reuse(ENTERNUMBER)
+        b:(~number )OK, recorded.I am tranfering you to an agent. ^respond(~index)
+        b:() No prolem, I am tranfering you to an agent. ^respond(~index)
+
+
+u:() ^refine()
+    a:([waive]) You want to waive your late fee, right?
+        b:(~yes)OK. Can I have your account number?
+            c:(~yes) ^reuse(ENTERNUMBER)
+            c:(~number) OK, recorded.I am tranfering you to an agent. ^respond(~index)
+            c:(~no) No prolem, I am tranfering you to an agent. ^respond(~index)
+            c:^reuse(ENTERNUMBER)
+        b:(~no) ^respond(~index)
+
+    a:() You have trouble with your late fee,right?
+        b:(~yes)OK. Can I have your account number?
+            c:(~yes) ^reuse(ENTERNUMBER)
+            c:(~number) OK, recorded.I am tranfering you to an agent. ^respond(~index)
+            c:() No prolem, I am tranfering you to an agent. ^respond(~index)
+        b:(~no) ^respond(~index)
+
+
+

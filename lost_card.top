@@ -1,0 +1,37 @@
+topic: ~lost_card keep()
+
+t:ASKCLOSE () Would you like to close your account immediately? 
+a:() Let me transfer you to one of our agents. Please wait patiently. ^respond(~index)
+
+
+
+t: ENTERNUMBER (~yes) Please enter 8 digits account number.
+a:(~number) Okay, I have your card number. ^reuse(ASKCLOSE)
+a:() Sorry, it is not a legal account number.Would you like to re-enter it?
+b:(~yes) ^reuse(ENTERNUMBER)
+b:(~number )Okay, recorded. ^reuse(ASKCLOSE)
+b:() Let me transfer you to one of our agents. Please wait patiently. ^respond(~index)
+
+t: ASKCARD () ^refine()
+
+    a:(~number) Okay, I have your card number. ^reuse(ASKCLOSE)
+    a:(~no) Let me transfer you to one of our agents. Please wait patiently. ^respond(~index)
+    a:() ^reuse(ENTERNUMBER)
+
+
+
+
+u: () You lost your card?
+    a:(~yes) Don't worry, I can help you with that. When did you lose your card?
+
+        b:([<~no [know clear]> forget]) No problem, may I have your card number?
+            c:() ^reuse(ASKCARD)
+
+
+
+        b:(~dateinfo) May I please have your card number as well?
+            c:() ^reuse(ASKCARD)
+
+        b:() No problem, may I have your card number?
+            c:() ^reuse(ASKCARD)
+

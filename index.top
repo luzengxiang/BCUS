@@ -1,0 +1,11 @@
+
+topic: ~index keep repeat ()
+
+u: (%input<%userfirstline) [I can help you with some of the most common issues, faster! How can I assist you today?][I am an AI chatbot and am very smart! What could I do for you?]
+    a: ()  ^respond(~topic_control)
+u: (%input>=%userfirstline)Do you need any other help?
+       a: (~no) Have a great day!
+    a: (~yes) How may I assist you?
+        b: () ^respond(~topic_control)
+    a: () ^respond(~topic_control)
+
